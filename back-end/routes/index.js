@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 const WordsListModel = require('../models/WordsListItem');
 
 router.get('/', (req, res) => {
-	// res.send('It works!');
 	res.render('index');
 });
 
-router.get('/words', (req, res) => {
+router.get('/getWordsAction', (req, res) => {
 	WordsListModel.find({}, (err, words) => {
 		if (err) return res.status(500).json(err);
 		console.log('words ->', words);
@@ -16,23 +14,21 @@ router.get('/words', (req, res) => {
 	});
 });
 
-/*
-router.get('/words', (req, res) => {
-	res.setHeader('Content-Type', 'application/json');
-
-	WordsListItem.find()
-		.then((words) => {
-			console.log('words ->', words)
-			res.send(words);
-		})
-		.catch((e) => {
-			console.log(e)
-			res.send('Sorry! Something went wrong.');
-		});
-	// res.end(JSON.stringify({
-	// 	a: 1
-	// }));
+router.post('/addWordAction', (req, res) => {
+	const newWordListItem = new WordsListModel(req.body);
+	newWordListItem.save(err => {
+		if (err) {
+			res.end({
+				result: 'Success',
+				message: '✅ New word has been added.'
+			});
+		} else {
+			res.end({
+				result: 'Failure',
+				message: '❌ Now word has not been added.'
+			});
+		}
+	});
 });
-*/
 
 module.exports = router;

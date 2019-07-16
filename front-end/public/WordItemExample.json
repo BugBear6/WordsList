@@ -9,7 +9,7 @@
 			"Los arqueólogos encontraron una {b}quijada{/b} inferior con todos los dientes."
 		],
 		"translations": {
-			"ang": [
+			"eng": [
 				"jaw",
 				"jawbone"
 			],
@@ -26,7 +26,7 @@
 			"Di unos golpes en la puerta con {b}los nudillos{/b}, pero no me contestó nadie."
 		],
 		"translations": {
-			"ang": [
+			"eng": [
 				"knuckle"
 			],
 			"pol": [
@@ -42,7 +42,7 @@
 			"{b}La carcasa{/b} de mi celular se rompió cuando lo tiré sin querer."
 		],
 		"translations": {
-			"ang": [
+			"eng": [
 				"case"
 			],
 			"pol": []

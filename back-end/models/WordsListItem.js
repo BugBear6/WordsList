@@ -1,35 +1,19 @@
 const mongoose = require('mongoose');
 
 const wordsListItemSchema = new mongoose.Schema({
-	entry: {
-		type: String,
-		trim: true
-	},
-	tags: [String],
-	timestamp: {
-		type: Number,
-		trim: true
-	},
+	es: {type: String, required: true, trim: true},
+	timestamp: Number,
+	favorite: Boolean,
+	color: Boolean,
+	examples: [String],
 	translations: {
-		ang: [{
-			entry: {
-				type: String,
-				trim: true
-			},
-			examples: [{
-				es: [String],
-				ang: [String]
-			}]
+		eng: [{
+			type: String,
+			required: () => this.translations.pol.length === 0
 		}],
 		pol: [{
-			entry: {
-				type: String,
-				trim: true
-			},
-			examples: [{
-				es: [String],
-				ang: [String]
-			}]
+			type: String,
+			required: () => this.translations.eng.length === 0
 		}]
 	}
 }, {

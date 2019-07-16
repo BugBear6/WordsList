@@ -26,11 +26,10 @@ export default {
 		};
 	},
 	created() {
-		console.log('Component created')
 		getWords()
 			.then(resp => {
-				console.log(resp);
-				this.words = resp;
+				console.log('getWords response =>', resp);
+				this.words = resp.data;
 		});
 	}
 };

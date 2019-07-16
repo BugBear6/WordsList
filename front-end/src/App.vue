@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<WordsListNavbar />
+		<AppNavbar v-bind:routeName="routeName" />
 		<div id="app" class="container">
 			<router-view />
 		</div>
@@ -8,13 +8,33 @@
 </template>
 
 <script>
-import WordsListNavbar from './components/WordsListNavbar.vue';
+import AppNavbar from './components/AppNavbar.vue';
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 
 export default {
 	name: 'WordsListApp',
+	data() {
+		return {
+			routeName: ''
+		};
+	},
 	components: {
-		WordsListNavbar
+		AppNavbar
+	},
+	created() {
+		this.setRouteName();
+	},
+	watch: {
+		$route: {
+			handler() {
+				this.setRouteName();
+			}
+		}
+	},
+	methods: {
+		setRouteName() {
+			this.routeName = this.$route.name || '';
+		}
 	}
 };
 </script>

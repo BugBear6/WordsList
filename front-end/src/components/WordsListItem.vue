@@ -1,6 +1,6 @@
 <template>
 	<div class="words-list__item card"
-		v-bind:class="{ 'bg-success text-white': this.word.color }">
+		v-bind:class="{ 'bg-primary text-white': this.word.color }">
 		<div class="card-header words-list__header">
 			<h4 class="words-list__es"
 				v-bind:class="{
@@ -16,13 +16,13 @@
 		</div>
 		<div class="translation-item-body card-body">
 			<ul class="translations-list">
-				<li v-if="this.word.translations.ang && this.word.translations.ang.length">
+				<li v-if="this.word.translations.eng && this.word.translations.eng.length">
 					<h5 class="ang-translations"
 						v-bind:class="{
 							'text-white': this.word.color,
 							'text-primary': !this.word.color
 						}">
-						{{this.word.translations.ang.join(', ')}}
+						{{this.word.translations.eng.join(', ')}}
 					</h5>
 				</li>
 				<li v-if="this.word.translations.pol && this.word.translations.pol.length">
